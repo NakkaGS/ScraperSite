@@ -74,6 +74,41 @@ export const listArticleDetails = (id) => async (dispatch) => { //it is a action
     }
 }
 
+//////////////////////////////////////////////
+export const listArticleByCategoryDetails = (category) => async (dispatch) => { //it is a action
+    //console.log(id)
+
+    try {
+
+        const config = {
+            headers: { //It just worked like this for PUT. Axious is in x-www-form-urlencoded
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
+        }
+
+        dispatch({ type: ARTICLE_DETAILS_REQUEST })
+            const { data } = await axios.post(
+                '/api/articles/getarticlebycategory', 
+                { articlecategory: category },
+                config
+                )
+                  
+
+        dispatch({
+            type: ARTICLE_DETAILS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: ARTICLE_DETAILS_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
 export const createArticle = (articleCreate) => async(dispatch, getState) => {
     try {
         dispatch({

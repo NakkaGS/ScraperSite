@@ -23,14 +23,15 @@ import FormContainer from "../components/FormContainer";
 //Contants
 import { ARTICLE_CREATE_RESET } from "../constants/articleConstants";
 
-function RegisterScreen() {
+function ArticleCreateScreen() {
 
   //Initial State Empty (initializing fields)
-  const [name, setName] = useState('')
+  const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
-  const [description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
-  const [countInStock, setCountInStock] = useState('')
+  const [comments, setComments] = useState('')
+  const [text, setText] = useState('')
+  const [writer, setWriter] = useState('')
+  const [date, setDate] = useState('')
 
   const dispatch = useDispatch();
 
@@ -50,11 +51,12 @@ function RegisterScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
     const article = {
-      name: name,
-      price: price,
-      countInStock: countInStock,
-      description: description,
+      title: title,
       category: category,
+      comments: comments,
+      text: text,
+      writer: writer,
+      date: date,
     };
     
     dispatch(createArticle(article));
@@ -62,7 +64,7 @@ function RegisterScreen() {
 
   return (
     <FormContainer>
-      <h1>Create Product</h1>
+      <h1>Create Article</h1>
 
       {loadingCreate ? 
         <Loader/> 
@@ -70,25 +72,14 @@ function RegisterScreen() {
             ? <Message variant='danger'>{errorCreate}</Message>
             : (
                 <Form onSubmit={submitHandler}>
-                    <Form.Group className="mb-3" controlId="name">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Group className="mb-3" controlId="title">
+                    <Form.Label>Title</Form.Label>
                     <Form.Control
                         required
                         type="text"
-                        placeholder="Enter Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    ></Form.Control>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="price">
-                    <Form.Label>Price</Form.Label>
-                    <Form.Control
-                        required
-                        type="number"
-                        placeholder="Enter Price"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        placeholder="Enter Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     ></Form.Control>
                     </Form.Group>
 
@@ -97,31 +88,53 @@ function RegisterScreen() {
                     <Form.Control
                         required
                         type="text"
-                        placeholder="Enter setCategory"
+                        placeholder="Enter Category"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                     ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="description">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Enter Description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></Form.Control>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="countInStock">
-                    <Form.Label>Stock</Form.Label>
+                    <Form.Group className="mb-3" controlId="comments">
+                    <Form.Label>Comments</Form.Label>
                     <Form.Control
                         required
                         type="number"
-                        placeholder="Enter Stock"
-                        value={countInStock}
-                        onChange={(e) => setCountInStock(e.target.value)}
+                        placeholder="Enter Comments"
+                        value={comments}
+                        onChange={(e) => setComments(e.target.value)}
+                    ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="writer">
+                    <Form.Label>Writer</Form.Label>
+                    <Form.Control
+                        required
+                        type="text"
+                        placeholder="Enter Writer Name"
+                        value={writer}
+                        onChange={(e) => setWriter(e.target.value)}
+                    ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="date">
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control
+                        required
+                        type="text"
+                        placeholder="Enter Date"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                    ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="text">
+                    <Form.Label>Text</Form.Label>
+                    <Form.Control
+                        required
+                        type="text"
+                        placeholder="Enter Text"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
                     ></Form.Control>
                     </Form.Group>
 
@@ -136,4 +149,4 @@ function RegisterScreen() {
   );
 }
 
-export default RegisterScreen;
+export default ArticleCreateScreen;

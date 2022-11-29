@@ -11,6 +11,7 @@ import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import ArticleScreen from './screens/ArticleScreen';
 import ArticleCreateScreen from './screens/ArticleCreateScreen';
+import ArticleByCategoryScreen from './screens/ArticleByCategoryScreen';
 
 function App() {
   return (
@@ -22,10 +23,12 @@ function App() {
 
           <Route path='/' element={<HomeScreen/>} exact/>
           <Route path='article/:id' element={<ArticleScreen/>} />
+          <Route path='article/category/:category' element={<ArticleByCategoryScreen/>} />
           <Route path='article/create' element={<ArticleCreateScreen/>} />
 
         </Routes>
       </div>
+      
     </Router>
       
   );

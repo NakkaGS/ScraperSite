@@ -9,10 +9,15 @@ function Article({ article }) {
   return (
     <div>
         <Card className='me-5 ms-5 mt-2 mb-2'>
-            <Image src={article?.image} alt={article?.name} fluid />
+            <Link to={`/article/${article?._id}`}>
+                {article?.image && <img src={article?.image} alt={article?.name} className="site-img"/>}
+            </Link>  
+
             <Card.Body>
                 <Row>
-                    <Card.Title className='text-center card-title'><h2>{article?.name}</h2></Card.Title>
+                    <Link to={`/article/${article?._id}`}>
+                        <Card.Title className='text-center card-title'><h2>{article?.title}</h2></Card.Title>
+                    </Link>  
                 </Row>
                 <Row>
                     <Col className='text-center'>

@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react'
 
+//Router
+import { useParams } from "react-router-dom"; //Library React Router Dom
+
 //Redux
 import { useDispatch, useSelector } from 'react-redux' 
 //useSelector - allows us to used certain parts of the state/reducer
@@ -8,16 +11,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listArticles } from '../actions/articleActions'
 
 //Boostrap Components
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Card, ListGroup } from 'react-bootstrap'
 
 //Components
 import Article from '../components/Article'
 import Categories from '../components/Categories'
 
-export default function HomeScreen(){
+export default function ArticleByCategoryScreen({ match }){
 
     const dispatch = useDispatch()
-
+  
     const articleList = useSelector(state => state.articleList)
     const {error, loading, articles} = articleList 
 
@@ -25,17 +28,24 @@ export default function HomeScreen(){
         dispatch(listArticles())
     }, [dispatch])
 
+    let { category } = useParams(match); //get the Product ID
+    console.log(category)
+
     return(
     <div>
         <Row>
 
             <Col md={9}>
                 {articles?.length && (articles.map(article => {
-                    return ( 
-                        <div key={article._id}>
-                            <Article article={article} />
-                        </div>
-                )}))}
+
+                    if(article.category.search(`${category}`)){
+                        return ( 
+                            <div key={article._id}>
+                                <Article article={article} />
+                            </div>
+                        )
+                    } 
+                    }))}
             </Col>
 
             <Col md={3}>

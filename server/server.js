@@ -2,6 +2,8 @@
 const express = require("express")
 const app = express()
 
+const action = require("./scraper/scraper.js")
+
 //Cors - Cross-Origin Resource Sharing 
 var cors = require('cors')
 
@@ -31,3 +33,12 @@ app.listen(8000, function () {
    });
 
 module.exports = app
+
+
+
+const nodeSchedule = require('node-schedule');
+const job = nodeSchedule.scheduleJob('* * * * *', function(){
+    console.log('Searching for new articles... ', new Date);
+    action.scraper()
+    
+})

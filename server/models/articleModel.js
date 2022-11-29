@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const articleSchema = mongoose.Schema({
-    name : {
+    title : {
         type: String,
         require: true
     },

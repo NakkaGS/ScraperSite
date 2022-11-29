@@ -2,9 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+   "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "NKT",
   "license": "ISC",
@@ -17,6 +20,8 @@
     "get-sitemap-links": "^1.0.6",
     "mongoose": "^6.7.4",
     "node": "^19.1.0",
-    "request-promise": "^4.2.6"
+    "request-promise": "^4.2.6",
+    "node-schedule": "^2.1.0"
+    
   }
 }

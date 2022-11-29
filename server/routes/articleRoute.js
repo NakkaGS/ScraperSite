@@ -69,12 +69,14 @@ router.post("/create", (req, res) => {
     //console.log(product);
 
     const articleModel = new Article({
-        name : article.name , 
+        title : article.title , 
         image : article.image,
         category : article.category,
-        write : article.write,
-        comment : article.comment,
-        text : article.text
+        writer : article.writer,
+        comments : article.comments,
+        text : article.text,
+        date: article.date,
+        image: article.image
 
     })
 
