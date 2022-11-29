@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "npm i request-promise --save && node server.js"
   },
   "author": "NKT",
   "license": "ISC",

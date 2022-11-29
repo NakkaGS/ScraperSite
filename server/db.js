@@ -2,7 +2,10 @@
 require('dotenv').config();
 
 //MongoDB URL
-var mongoDBURL = process.env.MONGODBURL
+
+const { MONGODBURL } = process.env;
+
+var mongoDBURL = MONGODBURL
 
 //Mongoose - connect with MongoDB
 const mongoose = require("mongoose");
