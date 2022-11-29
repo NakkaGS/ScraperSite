@@ -13,6 +13,8 @@ router.use(bodyParser.urlencoded({ extended: true }))
 //Get all Products
 router.get("/getallarticles", (req, res) => {
 
+    console.log('Get all articles requested')
+
     Article.find({} , (err , docs)=>{
 
     if(!err)
@@ -29,6 +31,8 @@ router.get("/getallarticles", (req, res) => {
 
 //Get Product ID by POST using Body
 router.post("/getarticlebyid", (req, res) => {
+
+    console.log('Get article by ID requested')
 
     Article.find({_id : req.body.articleid} , (err , docs)=>{
 
@@ -47,6 +51,8 @@ router.post("/getarticlebyid", (req, res) => {
 //Get Product ID by POST using Body
 router.post("/getarticlebycategory", (req, res) => {
 
+    console.log('Get all articles in categories requested')
+
     Article.find({category : req.body.category} , (err , docs)=>{
 
         if(!err)
@@ -63,6 +69,8 @@ router.post("/getarticlebycategory", (req, res) => {
 
 //Create a product
 router.post("/create", (req, res) => {
+
+    console.log('Create a new article requested')
 
     const {article} = req.body
 
