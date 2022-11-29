@@ -22,4 +22,6 @@ dbconnect.on('connected' , ()=>{
     console.log(`Mongo DB Connection Successfull`);
 })
 
+console.log(mongoDBURL)
+
 module.exports = mongoose
