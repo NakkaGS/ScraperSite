@@ -21,7 +21,7 @@ import {
 export const listArticles = () => async (dispatch) => { //it is a action
     try {
         dispatch({ type: ARTICLE_LIST_REQUEST })
-            const { data } = await axios.get(`/api/articles/getallarticles`)
+            const { data } = await axios.get(`https://scrapersite-server.onrender.com/api/articles/getallarticles`)
             //console.log(data)
 
         dispatch({
@@ -53,7 +53,7 @@ export const listArticleDetails = (id) => async (dispatch) => { //it is a action
 
         dispatch({ type: ARTICLE_DETAILS_REQUEST })
             const { data } = await axios.post(
-                '/api/articles/getarticlebyid', 
+                'https://scrapersite-server.onrender.com/api/articles/getarticlebyid', 
                 { articleid: id },
                 config
                 )
@@ -88,7 +88,7 @@ export const listArticleByCategoryDetails = (category) => async (dispatch) => { 
 
         dispatch({ type: ARTICLE_DETAILS_REQUEST })
             const { data } = await axios.post(
-                '/api/articles/getarticlebycategory', 
+                'https://scrapersite-server.onrender.com/api/articles/getarticlebycategory', 
                 { articlecategory: category },
                 config
                 )
@@ -124,7 +124,7 @@ export const createArticle = (articleCreate) => async(dispatch, getState) => {
 
         //in the backend, there is a url (API) that it gets the data from the user
         const { data } = await axios.post(
-            `/api/articles/create/`,
+            `https://scrapersite-server.onrender.com/api/articles/create/`,
             { article: articleCreate }, //post needs to send something
             config
         )
