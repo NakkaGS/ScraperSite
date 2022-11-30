@@ -21,6 +21,9 @@ app.use('/api/articles/' , articleRoute, cors())
 if(process.env.NODE_ENV === 'production')
 {
     app.use('/' , express.static('frontend/build'))
+    app.get('/', (req, res) => {
+        res.sendStatus(200)
+      })
     app.get('*' , (req,res)=>{
         res.sendFile(path.resolve(__dirname , 'frontend/build/index.html'))
     })
