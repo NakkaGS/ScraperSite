@@ -2,6 +2,7 @@
 const express = require("express")
 const app = express()
 
+//Scraper Function
 const action = require("./scraper/scraper.js")
 
 //Cors - Cross-Origin Resource Sharing 
@@ -28,14 +29,14 @@ if(process.env.NODE_ENV === 'production')
 //if it not in production
 const port = process.env.PORT || 8000;
 
-app.listen(8000, function () {
-    console.log('Node JS Server Started on Port 8000!');
+app.listen(port, function () {
+    console.log(`Node JS Server Started on Port ${port}`);
    });
 
 module.exports = app
 
 
-
+//It call the Scraper Logic every 1 minute
 const nodeSchedule = require('node-schedule');
 const job = nodeSchedule.scheduleJob('* * * * *', function(){
     console.log('Searching for new articles... ', new Date);
