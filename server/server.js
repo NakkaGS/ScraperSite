@@ -14,8 +14,13 @@ var dbconnection = require('./db')
 //Routes
 var articleRoute = require('./routes/articleRoute')
 
+var corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  }
+
 //Create Route
-app.use('/api/articles/' , articleRoute, cors())
+app.use('/api/articles/' , articleRoute, cors(corsOptions))
 
 //This is for the production part
 if(process.env.NODE_ENV === 'production')
