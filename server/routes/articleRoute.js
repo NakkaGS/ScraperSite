@@ -12,40 +12,48 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 //Get all Products
 router.get("/getallarticles", (req, res) => {
-
     console.log('Get all articles requested')
+    try {
+        Article.find({} , (err , data)=>{
 
-    Article.find({} , (err , docs)=>{
+            if(!err){
+                return res.send(data);
+            } else {
+                return res.status(400).json({ message: 'Something went wrong' });
+            }
+        
+        })
 
-    if(!err)
-    {
-        return res.send(docs);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
     }
-    else{
-        return res.status(400).json({ message: 'Something went wrong' });
-    }
 
-    })
-  
 });
 
 //Get Product ID by POST using Body
 router.post("/getarticlebyid", (req, res) => {
 
-    console.log('Get article by ID requested')
+    console.log('Get articles by ID requested')
 
-    Article.find({_id : req.body.articleid} , (err , docs)=>{
+    try {
+        Article.find({_id : req.body.articleid} , (err , data)=>{
 
-        if(!err)
-        {
-            res.send(docs[0])
-        }
-        else{
-            return res.status(400).json({ message: 'Something went wrong' });
-        }
+            if(!err)
+            {
+                res.send(data[0])
+            }
+            else{
+                return res.status(400).json({ message: 'Something went wrong' });
+            }
+    
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
 
-    })
-  
 });
 
 //Get Product ID by POST using Body
