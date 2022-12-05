@@ -46,10 +46,10 @@ app.listen(port, function () {
 module.exports = app
 
 
-/* //It call the Scraper Logic every 1 minute
+//It call the Scraper Logic every 1 minute
 const nodeSchedule = require('node-schedule');
 const job = nodeSchedule.scheduleJob('* * * * *', function(){
     console.log('Searching for new articles... ', new Date);
     action.scraper()
     
-}) */
+})

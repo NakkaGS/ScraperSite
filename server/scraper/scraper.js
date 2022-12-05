@@ -9,7 +9,7 @@ exports.scraper = function (){(async () => {
 
     const array = await GetSitemapLinks("https://dev98.de/sitemap-1.xml");
  
-    let { data } = await axios.get(`http://localhost:8000/api/articles/getallarticles`)
+    let { data } = await axios.get(`https://scrapersite-server.onrender.com/api/articles/getallarticles`)
 
     for (site in array) {
         let mustNotSend = false
@@ -68,7 +68,7 @@ exports.scraper = function (){(async () => {
           });
 
           if (mustNotSend === false){
-            const { sent } = axios.post(`http://localhost:8000/api/articles/create/`,{ article: articleToSend })
+            const { sent } = axios.post(`https://scrapersite-server.onrender.com/api/articles/create/`,{ article: articleToSend })
             console.log('New article added at:', new Date)
           }
           

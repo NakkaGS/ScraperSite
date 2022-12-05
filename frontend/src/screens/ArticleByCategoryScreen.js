@@ -28,8 +28,7 @@ export default function ArticleByCategoryScreen({ match }){
         dispatch(listArticles())
     }, [dispatch])
 
-    let { category } = useParams(match); //get the Product ID
-    console.log(category)
+    let { category } = useParams(match); //get the category name in the address
 
     return(
     <div>
