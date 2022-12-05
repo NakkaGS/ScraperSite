@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 //Router
-import { useParams } from "react-router-dom"; //Library React Router Dom
+import { useParams, useLocation } from "react-router-dom"; //Library React Router Dom
 
 //Redux
 import { useDispatch, useSelector } from 'react-redux' 
@@ -26,9 +26,13 @@ export default function ArticleByCategoryScreen({ match }){
     const articleList = useSelector(state => state.articleList)
     const {error, loading, articles} = articleList 
 
+    let history = useLocation(); //for V6 it is useLocation, NOT useHistory
+
+    let keyword = history.search //for V6 it is search, NOT pathname
+
     useEffect(() => {
-        dispatch(listArticles())
-    }, [dispatch])
+        dispatch(listArticles(keyword))
+    }, [dispatch, keyword])
 
     let { category } = useParams(match); //get the category name in the address
 
