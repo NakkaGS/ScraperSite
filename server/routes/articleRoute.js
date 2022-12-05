@@ -12,11 +12,20 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 //Get all Products
 router.get("/getallarticles", (req, res) => {
+
     console.log('Get all articles requested')
+
+    var query = req.query.keyword
+
+    if (query == '' || typeof(query) == 'undefined'){
+        query = '' 
+    }
+
     try {
         Article.find({} , (err , data)=>{
 
             if(!err){
+                console.log('Query: ', query)
                 return res.send(data);
             } else {
                 return res.status(400).json({ message: 'Something went wrong' });
@@ -34,7 +43,7 @@ router.get("/getallarticles", (req, res) => {
 //Get Product ID by POST using Body
 router.post("/getarticlebyid", (req, res) => {
 
-    console.log('Get articles by ID requested')
+    console.log('Get articles by ID requested: ', req.body.articleid)
 
     try {
         Article.find({_id : req.body.articleid} , (err , data)=>{

@@ -18,10 +18,10 @@ import {
 
 //it works like a state machine
 //////////////////////////////////////////////
-export const listArticles = () => async (dispatch) => { //it is a action
+export const listArticles = (keyword) => async (dispatch) => { //it is a action
     try {
         dispatch({ type: ARTICLE_LIST_REQUEST })
-            const { data } = await axios.get(`https://scrapersite-server.onrender.com/api/articles/getallarticles`)
+            const { data } = await axios.get(`https://scrapersite-server.onrender.com/api/articles/getallarticles${keyword}`)
             //console.log(data)
 
         dispatch({
