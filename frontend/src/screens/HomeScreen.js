@@ -4,6 +4,9 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux' 
 //useSelector - allows us to used certain parts of the state/reducer
 
+//Router
+import { useLocation } from "react-router-dom"
+
 //Actions
 import { listArticles } from '../actions/articleActions'
 
